@@ -2,7 +2,6 @@
 # AIK-mobile/aik: command-line shortcut to the work dir
 # osm0sis @ xda-developers
 
-aik=/data/local/AIK-mobile;
 bb=$aik/bin/busybox;
 
 case $1 in
