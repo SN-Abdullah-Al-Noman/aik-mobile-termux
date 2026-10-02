@@ -200,9 +200,9 @@ fi
 
   #if [ ! -z "$($busybox awk '/vendor boot image header version:/ { print $6 }' $](pwd)/split_img/config/conf.txt)" == "4" ]; then
   
- aik_new_dir=~/AIK-mobile/split_img
- r_dir=~/AIK-mobile
- ram_dir=~/AIK-mobile/split_img/config
+ aik_new_dir="$aik/split_img"
+ r_dir="$aik"
+ ram_dir="$aik/split_img/config"
  #echo "1" > "$ram_dir"/SETPERM.txt
  #/data/local/python31/usr/bin/extract-dtb "$ram_dir"/dtb -o "$ram_dir" &> /dev/null
  if [ ! -z "$($busybox cat "$ram_dir"/conf.txt | $busybox grep "boot magic: VNDRBOOT")" ]; then
