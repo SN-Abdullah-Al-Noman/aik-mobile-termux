@@ -436,12 +436,12 @@ else
   $busybox find ramdisk -type d -o -type f | $busybox xargs $busybox stat -c '%n %u %g %a' | $busybox sed 's!^./!!' >> "$aik"/split_img/config/perm.txt
   #echo "ramdisk-new.cpio$compext" > split_img/config/OUTNEW_ramdisk.txt
   if [ "$header_version" == "4" -a "$frag_real" == "false" -a -s "$ram_dir"/*ramdisk00  ]; then
-  echo " ramdisk01-new.cpio$compext" > $(pwd)/AIK-mobile/split_img/config/ADDNEW_ramdisk01.txt
-  echo " ramdisk-new.cpio$compext" > $(pwd)/AIK-mobile/split_img/config/REPLACE_ramdisk.txt
+  echo " ramdisk01-new.cpio$compext" > $aik/split_img/config/ADDNEW_ramdisk01.txt
+  echo " ramdisk-new.cpio$compext" > $aik/split_img/config/REPLACE_ramdisk.txt
   elif [ "$header_version" == "4" -a "$frag_real" == "false" -a ! -s "$ram_dir"/*ramdisk00  ]; then
-  echo " ramdisk-new.cpio$compext" > $(pwd)/AIK-mobile/split_img/config/REPLACE_ramdisk.txt
+  echo " ramdisk-new.cpio$compext" > $aik/split_img/config/REPLACE_ramdisk.txt
     elif [ "$header_version" != "4" -a "$frag_real" == "false" ]; then
-  echo " ramdisk-new.cpio$compext" > $(pwd)/AIK-mobile/split_img/config/REPLACE_ramdisk.txt
+  echo " ramdisk-new.cpio$compext" > $aik/split_img/config/REPLACE_ramdisk.txt
   fi
  fi;
  echo ""
