@@ -13,9 +13,9 @@ case $0 in
      *) aik="$(lsof -p $$ 2>/dev/null | $bb grep -o '/.*repackimg.sh$')";;
 esac;
 # export aik="$(dirname "$(readlink -f "$aik")")";
-export aik=~/AIK-mobile
+export aik="$(pwd)"
 export bin="$aik/bin";
-ker_ver="$bin/ker_ver"
+export ker_ver="$bin/ker_ver";
 cur="$(readlink -f "$PWD")";
 
 abort() 
