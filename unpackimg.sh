@@ -113,7 +113,6 @@ case $imgtype in
   AOSP*|ELF|KRNL|OSIP|U-Boot) ;;
   *)
     cd ..;
-    cleanup;
     echo "...Unsupported format.";
     return 1;
   ;;
