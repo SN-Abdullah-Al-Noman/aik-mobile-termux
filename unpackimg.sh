@@ -47,14 +47,16 @@ echo "Android Image Kitchen - UnpackImg Script";
 echo "by osm0sis @ xda-developers";
 
 file=$($busybox basename "$img");
-echo "Supplied image: $file";
+echo ""
+echo "Supplied image: $file"
 
 if [ -d split_img -o -d ramdisk ]; then
-  echo "...Removing old work folders and files...";
+  echo "Removing old work folders and files...";
   rm -rf ramdisk* split_img*
 fi;
 
 echo "Setting up work folders...";
+echo " "
 mkdir split_img ramdisk;
 chmod 755 split_img ramdisk;
 #echo "run remount.sh to remount the current image's unpacked ramdisk" > ramdisk/README;
