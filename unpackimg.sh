@@ -441,7 +441,5 @@ else
   fi
  fi;
  echo ""
- echo ""
- $ker_ver "$aik/split_img/$file-kernel"
-
+ 
 echo "Done!"
