@@ -409,10 +409,9 @@ fi;
 if [ "$ramdiskcomp" == "empty" ]; then
   echo "Warning: No ramdisk found to be unpacked!";
 else
-  echo 'Unpacking ramdisk to "ramdisk/"';
-  echo "Compression used: $ramdiskcomp";
+  echo "Unpacking ramdisk to ${aik}/ramdisk/"
+  echo "Compression used: $ramdiskcomp"
   $ker_ver "$aik/split_img/$file-kernel"
-  #echo "Unpacking ramdisk to ramdisk/...";
   if [ ! "$compext" -a ! "$ramdiskcomp" == "cpio" ]; then
     echo "...Unsupported format.";
     return 1;
