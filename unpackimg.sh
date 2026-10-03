@@ -64,7 +64,7 @@ chmod 755 split_img ramdisk;
 
 #$bin/remount.sh --mount-only || return 1;
 
-cd "$aik/ramdisk";
+cd "$aik/split_img";
 filesize=$($busybox wc -c < "$img");
 echo "$filesize" > "$file-origsize";
 imgtest="$($bin/file -m $bin/androidbootimg.magic "$img" 2>/dev/null | $busybox cut -d: -f2-)";
