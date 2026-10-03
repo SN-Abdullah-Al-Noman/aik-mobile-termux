@@ -266,7 +266,7 @@ $busybox find -name "*ramdisk[0-9][0-9]" -type f | while read rd; do
  
  compout="$($busybox cat "$name_rd"_dec.log)"
  
- $ker_ver "$(pwd)/split_img/$file-kernel"
+ $ker_ver "${aik}/split_img/$file-kernel"
 
 case "$compout" in
     gzip) compout=gz;;
