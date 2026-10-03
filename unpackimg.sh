@@ -106,16 +106,16 @@ if [ "$(echo $imgtest | $busybox awk '{ print $2 }' | $busybox cut -d, -f1)" == 
   imgtype=$($busybox cat "$file-imgtype");
 else
   cd $aik;
-  echo "...Unrecognized format.";
+  echo "Unrecognized format.";
   exit;
 fi;
-echo "...Image type: $imgtype";
+echo "Image type: $imgtype";
 
 case $imgtype in
   AOSP*|ELF|KRNL|OSIP|U-Boot) ;;
   *)
     cd ..;
-    echo "...Unsupported format.";
+    echo "Unsupported format.";
     exit;
   ;;
 esac;
@@ -124,8 +124,8 @@ case $(echo $imgtest | $busybox awk '{ print $3 }') in
   LOKI)
     echo $imgtest | $busybox awk '{ print $5 }' | $busybox cut -d\( -f2 | $busybox cut -d\) -f1 > "$file-lokitype";
     lokitype=$($busybox cat "$file-lokitype");
-    echo "...Loki patch with \"$lokitype\" type detected, reverting...";
-    echo "...Warning: A dump of your device's aboot.img is required to re-Loki!";
+    echo "Loki patch with \"$lokitype\" type detected, reverting...";
+    echo "Warning: A dump of your device's aboot.img is required to re-Loki!";
     $bin/loki_tool unlok "$img" "$file" >/dev/null;
     img="$file";
   ;;
@@ -157,7 +157,7 @@ esac;
 tailtype="$(echo $tailtest | $busybox awk '{ print $1 }')";
 case $tailtype in
   AVB*)
-    echo "...Signature with \"$tailtype\" type detected.";
+    echo "Signature with \"$tailtype\" type detected.";
     case $tailtype in
       *v1)
         echo $tailtype > "$file-sigtype";
@@ -166,7 +166,7 @@ case $tailtype in
     esac;
   ;;
   Bump|SEAndroid)
-    echo "...Footer with \"$tailtype\" type detected.";
+    echo "Footer with \"$tailtype\" type detected.";
     echo $tailtype > "$file-tailtype";
   ;;
 esac;
@@ -174,13 +174,13 @@ esac;
 if [ "$imgtype" == "U-Boot" ]; then
   imgsize=$(($($busybox printf '%d\n' 0x$($busybox hexdump -n 4 -s 12 -e '16/1 "%02x""\n"' "$img")) + 64));
   if [ "$filesize" != "$imgsize" ]; then
-    echo "...Trimming...";
+    echo "Trimming..."
     $busybox dd bs=$imgsize count=1 conv=notrunc if="$img" of="$file" 2>/dev/null;
     img="$file";
   fi;
 fi;
 
-echo '...Splitting image to "split_img/"...';
+echo "Splitting image to $aik/split_img/"
 echo " "
 case $imgtype in
   AOSP_VNDR) vendor=vendor_;;
