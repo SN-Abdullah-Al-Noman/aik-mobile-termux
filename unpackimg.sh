@@ -63,7 +63,7 @@ chmod 755 split_img ramdisk;
 
 #$bin/remount.sh --mount-only || return 1;
 
-cd split_img;
+cd "$aik/ramdisk";
 filesize=$($busybox wc -c < "$img");
 echo "$filesize" > "$file-origsize";
 imgtest="$($bin/file -m $bin/androidbootimg.magic "$img" 2>/dev/null | $busybox cut -d: -f2-)";
@@ -102,8 +102,7 @@ if [ "$(echo $imgtest | $busybox awk '{ print $2 }' | $busybox cut -d, -f1)" == 
   echo "$(echo $imgtest | $busybox awk '{ print $1 }')$typesuffix" > "$file-imgtype";
   imgtype=$($busybox cat "$file-imgtype");
 else
-  cd ..;
-  cleanup;
+  cd $aik;
   echo "...Unrecognized format.";
   return 1;
 fi;
