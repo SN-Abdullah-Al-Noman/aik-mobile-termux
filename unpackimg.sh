@@ -17,8 +17,6 @@ export cur="$(readlink -f "$PWD")";
 export busybox=$bin/busybox;
 export unboot=$bin/unboot;
 
-rm -rf ramdisk* split_img*
-
 echo "AIK DIR: $aik"
 
 chmod -R 755 $bin *.sh;
@@ -52,7 +50,7 @@ echo "Supplied image: $file";
 
 if [ -d split_img -o -d ramdisk ]; then
   echo "...Removing old work folders and files...";
-  cleanup;
+  rm -rf ramdisk* split_img*
 fi;
 
 echo "Setting up work folders...";
