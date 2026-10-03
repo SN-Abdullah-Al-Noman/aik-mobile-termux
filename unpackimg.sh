@@ -105,7 +105,7 @@ if [ "$(echo $imgtest | $busybox awk '{ print $2 }' | $busybox cut -d, -f1)" == 
 else
   cd $aik;
   echo "...Unrecognized format.";
-  return 1;
+  exit;
 fi;
 echo "...Image type: $imgtype";
 
