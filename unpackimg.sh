@@ -12,6 +12,7 @@ case $0 in
 esac;
 export aik="$(pwd)"
 export bin="$aik/bin";
+export bootpatch="$bin/bootpatch"
 export ker_ver="$bin/ker_ver";
 export cur="$(readlink -f "$PWD")";
 export busybox=$bin/busybox;
@@ -282,7 +283,7 @@ echo "$name_rd"-new.cpio"$compout" > REPLACE_"$name_rd".txt
  mkdir "$r_dir"/"$name_rd"
  cd "$r_dir"/"$name_rd"
 
- bootpatch decompress "$ram_dir"/"$rd" "$ram_dir"/"$rd".cpio  && bootpatch cpio "$ram_dir"/"$rd".cpio extract || bootpatch cpio "$ram_dir"/"$rd" extract
+ $bootpatch decompress "$ram_dir"/"$rd" "$ram_dir"/"$rd".cpio  && $bootpatch cpio "$ram_dir"/"$rd".cpio extract || $bootpatch cpio "$ram_dir"/"$rd" extract
  
  #$busybox find | $busybox xargs $busybox stat -c '%n %u %g %a' | $busybox sed 's!^./!!' >> "$ram_dir"/perm"$r_num".txt
  
@@ -421,7 +422,7 @@ else
   
   cd ramdisk;
   $busybox rm -rf lost+found
-  bootpatch decompress $aik/split_img/$file-${vendor}ramdisk.cpio$compext $aik/split_img/$file-${vendor}ramdisk_m.cpio &>/dev/null && bootpatch cpio $aik/split_img/$file-${vendor}ramdisk_m.cpio extract &>/dev/null || bootpatch cpio $aik/split_img/$file-${vendor}ramdisk.cpio$compext extract &>/dev/null
+  $bootpatch decompress $aik/split_img/$file-${vendor}ramdisk.cpio$compext $aik/split_img/$file-${vendor}ramdisk_m.cpio &>/dev/null && $bootpatch cpio $aik/split_img/$file-${vendor}ramdisk_m.cpio extract &>/dev/null || $bootpatch cpio $aik/split_img/$file-${vendor}ramdisk.cpio$compext extract &>/dev/null
   
   
   if [ $? != 0 ]; then
