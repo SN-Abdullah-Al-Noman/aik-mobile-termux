@@ -418,11 +418,11 @@ else
   fi;
   #cd ramdisk;
   #$busybox rm -rf lost+found
-  #$unpackcmd "../split_img/$file-${vendor}ramdisk.cpio$compext" | EXTRACT_UNSAFE_SYMLINKS=1 cpio -i -d 2>&1;
+  #$unpackcmd "$aik/split_img/$file-${vendor}ramdisk.cpio$compext" | EXTRACT_UNSAFE_SYMLINKS=1 cpio -i -d 2>&1;
   
   cd ramdisk;
   $busybox rm -rf lost+found
-  bootpatch decompress ../split_img/$file-${vendor}ramdisk.cpio$compext ../split_img/$file-${vendor}ramdisk_m.cpio &>/dev/null && bootpatch cpio ../split_img/$file-${vendor}ramdisk_m.cpio extract &>/dev/null || bootpatch cpio ../split_img/$file-${vendor}ramdisk.cpio$compext extract &>/dev/null
+  bootpatch decompress $aik/split_img/$file-${vendor}ramdisk.cpio$compext $aik/split_img/$file-${vendor}ramdisk_m.cpio &>/dev/null && bootpatch cpio $aik/split_img/$file-${vendor}ramdisk_m.cpio extract &>/dev/null || bootpatch cpio $aik/split_img/$file-${vendor}ramdisk.cpio$compext extract &>/dev/null
   
   
   if [ $? != 0 ]; then
