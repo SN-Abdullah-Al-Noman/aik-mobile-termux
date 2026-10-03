@@ -114,7 +114,7 @@ case $imgtype in
   *)
     cd ..;
     echo "...Unsupported format.";
-    return 1;
+    exit;
   ;;
 esac;
 
