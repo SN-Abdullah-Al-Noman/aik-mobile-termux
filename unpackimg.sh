@@ -442,8 +442,6 @@ else
  fi;
  echo ""
  echo ""
- $ker_ver "$aik/split_img/$file-kernel";;
+ $ker_ver "$aik/split_img/$file-kernel"
 
-echo "Done!";
-# return 0;
-
+echo "Done!"
